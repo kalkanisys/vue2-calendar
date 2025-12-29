@@ -40,8 +40,8 @@
             @click="preNextMonthClick(1)"
           ></span>
         </div>
-        <template v-for="(p, pan) in pane">
-          <div class="datepicker-inner" :key="pan">
+        <template v-for="(p, pan) in pane" :key="pan">
+          <div class="datepicker-inner">
             <div class="datepicker-body">
               <p @click="switchMonthView">{{stringifyDayHeader(currDate, pan)}}</p>
               <div class="datepicker-weekRange">
@@ -84,14 +84,13 @@
             @click="preNextYearClick(1)"
           ></span>
         </div>
-        <template v-for="(p, pan) in pane">
-          <div class="datepicker-inner" :key="pan">
+        <template v-for="(p, pan) in pane" :key="pan">
+          <div class="datepicker-inner">
             <div class="datepicker-body">
               <p @click="switchDecadeView">{{stringifyYearHeader(currDate, pan)}}</p>
               <div class="datepicker-monthRange">
-                <template v-for="(m, $index) in text.months">
+                <template v-for="(m, $index) in text.months" :key="$index">
                   <span
-                    :key="$index"
                     :class="{'datepicker-dateRange-item-active':
                       (text.months[parse(value).getMonth()]  === m) &&
                       currDate.getFullYear() + pan === parse(value).getFullYear()}"
@@ -116,14 +115,13 @@
             @click="preNextDecadeClick(1)"
           ></span>
         </div>
-        <template v-for="(p, pan) in pane">
-          <div class="datepicker-inner" :key="pan">
+        <template v-for="(p, pan) in pane" :key="pan">
+          <div class="datepicker-inner">
             <div class="datepicker-body">
               <p>{{stringifyDecadeHeader(currDate, pan)}}</p>
               <div class="datepicker-monthRange decadeRange">
-                <template v-for="(decade, di) in decadeRange[pan]">
+                <template v-for="(decade, di) in decadeRange[pan]" :key="di">
                   <span
-                    :key="di"
                     :class="{'datepicker-dateRange-item-active':
                       parse(inputValue).getFullYear() === decade.text}"
                     @click.stop="yearSelect(decade.text)"
